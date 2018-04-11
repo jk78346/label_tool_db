@@ -1,0 +1,9 @@
+adjperson,#3EFF42
+Person,#96610F
+Time,#2D8596
+Place,#42966C
+Object,#B51BB0
+need,#0094FF
+Active,#7C1CFF
+Expect,#FFAC1C
+Pain,#FF0000

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="cache-control" content="max-age=0" />
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta http-equiv="expires" content="0" />
+  <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+  <meta http-equiv="pragma" content="no-cache" />
+
+  <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/css/bootstrap-select.min.css" rel="stylesheet">
+  <!-- Theme CSS -->
+
+  <!-- <link href="static/css/linedtextarea.css" rel="stylesheet"> -->
+  <!-- <link href="static/css/clean-blog.min.css" rel="stylesheet"> -->
+  <link href="static/css/marker.css" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDZpTaqVONaP9u9JjqKRlJUz4x-zJkUdBk",
+      authDomain: "test-db-dff2c.firebaseapp.com",
+      databaseURL: "https://test-db-dff2c.firebaseio.com",
+      projectId: "test-db-dff2c",
+      storageBucket: "test-db-dff2c.appspot.com",
+      messagingSenderId: "234879379539"
+    };
+    firebase.initializeApp(config);
+    database = firebase.database();
+
+  </script>
+
+  <!-- Load tether -->
+  <script src="static/js/tether.min.js"></script>
+  <!-- Load jQuery -->
+  <script src="static/jquery/jquery-3.1.1.min.js"></script>
+  <!-- Load jQuery UI -->
+  <script src="static/jquery/jquery-ui.min.js"></script>
+
+  <!-- Load jQuery LinedTextArea -->
+  <!-- <script src="static/js/linenumbers.js"></script>   -->
+
+  <!-- Load Bootstrap -->
+  <script src="static/bootstrap/js/bootstrap.min.js"></script>
+  <!-- Load jQuery.selection plugin-->
+  <script src="static/js/jquery.selection.js"></script>
+  <!-- Load Require.js-->
+  <!-- <script src="static/js/require.js"></script> -->
+  <!-- Load FileSaver-->
+  <script src="static/js/FileSaver.min.js"></script>
+  <!-- Load JSZip-->
+  <script src="static/js/jszip.min.js"></script>
+  <!-- Load JSColor-->
+  <script src="static/js/jscolor.min.js"></script>
+  <!-- Load bootstrap-select-->
+  <script src="static/js/bootstrap-select.min.js"></script>
+  <!-- Load custom marker js-->
+  <script src="static/js/marker.js"></script>
+
+  <style></style>
+
+
+  
+</head>
+<body>
+  <div id="header">
+    <div class="container">
+      <div class="row titleRow">
+        <div id="title" class="col-lg-12">
+          <h1 class="text-center">Simple Text Marker</h1>
+        </div>
+      </div><!-- /.row-->
+      <div class="row importLabel">
+        <div class="col-6 col-md-2 offset-md-10 offset-3">
+          <label id="labelInputLabel" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" data-title="範例格式:<br/>Person,#AAAAAA<br/>Location,#BBBBBB" data-html=true>匯入標籤</label>
+          <input type="file" id="labelInput">
+          
+        </div>
+        <!-- <div class="dropdown col-6 col-md-2">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">選擇標籤
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#" id="addLabelButton">新增標籤</a></li>
+          </ul>
+        </div> --> 
+        <div></div>
+      </div><!-- /.row-->
+      <div id="fileListContainer" class="col-md-4 col-sm-4 col-xs-4 col-6">
+        <label id="fileInputLabel" class="btn btn-primary">選取檔案</label>
+        <input type="file" id="fileInput" class="btn btn-primary" multiple>
+        <div id="fileList">
+        </div>
+      </div>
+    </div><!-- /.container-->
+
+  </div><!-- /#header -->
+
+  <div id="container" class="row">
+    <textarea id="article" readonly rows=20 class="col-md-5"></textarea>
+    <div id="result" class="col-md-8"></div>
+    <div class="labels col-md-3">
+      <div class="labelButtons"></div>
+    </div>
+    <div class="wordFreq col-md-1">
+    </div>
+    <div id="controlBar">
+      <center>
+        <!-- <button type="button" id="mark" value="mark" class="btn btn-primary">Mark (Q)</button> -->
+        <!-- <button type="button" id="unmark" value="unmark" class="btn btn-primary">Unmark (W)</button> -->
+        <!-- <button type="button" id="reset" value="reset" class="btn btn-primary">Reset (R)</button> -->
+        <button type="button" id="save" value="save" class="btn btn-primary">Save (S)</button>
+        <!-- <button type="button" id="saveAll" value="saveAll" class="btn btn-primary">Save All (A)</button> -->
+      </center>
+    </div>
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-12">
+          <footer>
+            <p class="copyright text-muted text-center">Copyright &copy; IRLab 2017</p>
+          </footer>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+
+
+
+  <!-- add label -->
+  <div class="modal fade" tabindex="-1" role="dialog" id="addLabelModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">新增標籤</h4>
+        </div>
+        <div class="modal-body">
+          <input name="addLabelName" placeholder="標籤名稱">
+          <input name="addLabelColor" placeholder="標籤顏色" class="jscolor">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+          <button type="button" class="btn btn-primary" id="saveLabelButton">新增</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+h1 { 
+    color: #111; 
+    font-family: 'Helvetica Neue', sans-serif; 
+    font-size: 40px; 
+    font-weight: bold; 
+    letter-spacing: -1px; 
+    line-height: 1; 
+    text-align: center; 
+    vertical-align: middle;
+    display: inline-block;
+}
+footer {
+    margin-top: 40px;
+}
+#header {
+    /*height: 80px;*/
+    /*display: table;*/
+    text-align: center;
+    margin:  0px 0px 20px 0px;
+}
+#header .container{
+    width: 100%;
+}
+
+.labelButtons {
+    margin: 0 auto;
+    width: 100%
+}
+
+#header button, #header label {
+    width: 100%;
+}
+
+#title {
+    padding-top: 20px
+}
+.dropdown-menu {
+    left: inherit;
+}
+
+#container {
+    height: 480px;
+    margin: 0px 1px 30px 1px;
+}
+
+
+#result b {
+    color: red;
+}
+
+#article, #result {
+    display: block;
+    white-space: pre-wrap;
+    height: 500px;
+    overflow-y: auto;
+}
+
+#article {
+    float: left;
+    border: dashed #ccc 5px;
+    resize: none;
+    display: none;
+}
+#result {
+    border: solid #aaa 5px;
+    word-wrap: break-word;
+    /*margin-left: 20px;*/
+}
+
+#fileList {
+    display: inline;
+    overflow: auto;
+}
+#fileListContainer {
+    margin: 0px auto 0px auto;
+}
+#fileListContainer button, #fileListContainer label{
+    /*display: block;*/
+    /*width: 45%;*/
+    margin: 5px auto 0px auto;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+}
+#fileInput, #labelInput {
+    width: 100%;
+    display: none;
+}
+
+#controlBar {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.modal {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) { 
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+}
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.singleLabelBlock {
+    width: 33%;
+    float: left
+}
+
+.labelBlocks .btn {
+    display: block;
+    width: 100%
+}
+
+.labelBlocks textarea {
+    width: 100%;
+    height: 180px;
+    resize: none
+}
+
+button#updateArticle, button#clearKeywords {
+    display: inline;
+    width: 100%;
+    min-width: 150px;
+    margin-bottom: 4px
+}
+
+.wordFreq, .labels {
+    height: 500px;
+    overflow-y: auto;
+}
+
+object {
+    width: 0px !important;
+    height: 0px !important;
+}
+
+.analysis span {
+    display: inline-block;
+    width: 180px;
+}
+
+#fileList li{
+    text-align: left
+}
+
+.labelResult {
+    display: block;
+}
+
+.labelBlocks span {
+    display: block;
+    width: 100%;
+    height: 180px;
+    resize: none
+}
